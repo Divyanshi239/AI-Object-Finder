@@ -23,12 +23,12 @@ body {
     height: 35px;
 }
 
-.start {
+#start, #object {
     width: 100px;
     font-size: 18px;
 }
 
 canvas {
-    background-color: peachpuff;
+    border: 5px solid black;
     box-shadow: 0px 7px 2px 0px lightskyblue;
 }
