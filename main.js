@@ -17,19 +17,19 @@ function setup() {
 
 function modelLoaded() {
     console.log("Model Is Initialized");
-    status = true;
+    status = "start";
 }
 
 function draw() {
     image(video, 0, 0, 600, 500);
-
+    console.log("Before If");
     if (status != "") {
-
+        console.log("Inside if");
         objectDetector.detect(video, gotresult);
 
         for (i = 0; i < objects.length; i++) {
-            
-            if (object == objects[i].label) {
+            console.log(objects[i].label);
+            if (object === objects[i].label) {
                 text(objects[i].label + " " + percentage + "%", objects[i].x + 5, objects[i].y + 10);
                 rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
                 document.getElementById("status").innerHTML = "Object Found";
@@ -60,6 +60,8 @@ function gotresult(error, results) {
 
 function start() {
     objectDetector = ml5.objectDetector('cocossd', modelLoaded);
+    //status = true;
     document.getElementById("status").innerHTML = "Status: Detecting Objects";
     object = document.getElementById("object").value;
+    console.log(object);
 }
